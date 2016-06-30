@@ -1,0 +1,23 @@
+<script src='/auth/helper.js'></script>
+<h1>An example for SPA apps</h1>
+<div>
+  You may Send the token as SSO-Authorization header to your REST API or rely on the server-side cookie
+</div>
+<div id='content'></div>
+<script>
+function onChange() {
+  var str;
+  if (auth.isLoggedIn) {
+    str = "Hello " + auth.name + "<br/> \
+           You are logged in as " + auth.email + "<br/> \
+           Token " + auth.token + "<br/> \
+           <button onclick='auth.logout()'>Logout</button>"
+  } else {
+    str = "<button onclick='auth.login()'>Login</button>"
+  }
+  document.getElementById('content').innerHTML = str;
+}
+onChange();
+auth.onLogin = onChange
+auth.onLogout = onChange
+</script>

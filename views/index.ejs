@@ -1,0 +1,17 @@
+<script src='/auth/helper.js'></script>
+<h1>An example for traditional apps</h1>
+<% if (isLoggedIn) { %>
+  Hello <%= name %><br/>
+  You are logged in as <%= email %><br/>
+  <button onclick='auth.logout()'>Logout</button>
+<% } else { %>
+  <button onclick='auth.login()'>Login</button>
+<% } %>
+<script>
+  auth.onLogin = function () {
+    window.location.reload()
+  }
+  auth.onLogout = function () {
+    window.location.reload()
+  }
+</script>
